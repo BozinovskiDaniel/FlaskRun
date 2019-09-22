@@ -1,12 +1,78 @@
-{% extends 'layout.html' %}
+{% extends 'index.html' %}
 
-{% block body %}
+{% block content %}
 
-<div class="jumboton text-center">
-    <h1>Welcome to my FlaskApp</h1>
-    <p class="lead">This application is built on the Python Flask framwork</p>
-    <p class="lead">I am going to add some functionality to a login/registration system</p>
-</div>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+    <a class="navbar-brand" href="#">FlaskApplication</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="register">Register</a>
+            </li>
+        </ul>
+
+    </div>
+    </div>
+</nav>
+
+<div class="container">
+      <img src="../static/logo.png" alt="Lexus" class="logo" />
+      {% if message %}
+        <p class="message">{{ message | safe }}</p>
+      {% endif %}
+      <form action="/submit" method="POST">
+        <div class="form-group">
+          <h3>Customer Name</h3>
+          <input
+            type="text"
+            name="customer"
+            placeholder="Name of vehicle owner"
+          />
+        </div>
+        <div class="form-group">
+          <h3>Dealer</h3>
+          <select name="dealer">
+            <option value="">Select Dealer</option>
+            <option value="Tom Smith">Tom Smith</option>
+            <option value="Karen Swanson">Karen Swanson</option>
+            <option value="Jim Johnson">Jim Johnson</option>
+            <option value="Shauna Gifford">Shauna Gifford</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <h3>Please rate your dealer</h3>
+          <input type="radio" name="rating" value="1" /> 1
+          <input type="radio" name="rating" value="2" /> 2
+          <input type="radio" name="rating" value="3" /> 3
+          <input type="radio" name="rating" value="4" /> 4
+          <input type="radio" name="rating" value="5" /> 5
+          <input type="radio" name="rating" value="6" /> 6
+          <input type="radio" name="rating" value="7" /> 7
+          <input type="radio" name="rating" value="8" /> 8
+          <input type="radio" name="rating" value="9" /> 9
+          <input type="radio" name="rating" value="10" checked /> 10
+        </div>
+        <div class="form-group">
+          <h3>Comments about your experience</h3>
+          <textarea
+            name="comments"
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Tell us what you liked and/or did not like"
+          ></textarea>
+        </div>
+        <input type="submit" value="Submit" class="btn" />
+      </form>
+    </div>
 
 {% endblock %}
